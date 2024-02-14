@@ -9,9 +9,6 @@
             </h2>
         </div>
         <div class="col-12">
-            <h2 scope="row">
-                {{ $project->id }}
-            </h2>
             <p>
                 {{ $project->description }}
             </p>
@@ -20,8 +17,10 @@
             <button class="btn btn-sm btn-success">
                 Edit
             </button>
-            <button class="btn btn-sm btn-warning">
-                Delete
+            <button class="btn btn-sm btn-warning" onclick="return confirm('Sei sicuro di voler eliminare questo elemento?');">
+            <a href="{{ route('admin.delete-show', ['project' => $project->id]) }}">
+                    Delete
+                </a>
             </button>
         </div>
                 </ul>
