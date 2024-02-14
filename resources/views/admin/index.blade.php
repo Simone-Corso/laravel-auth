@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12 p-2 mb-3 text-center">
             <h2>
-                These are all our available posts, {{ Auth::user()->name }}!
+                Questi sono i tuoi progetti, benvenuto {{ Auth::user()->name }}!
             </h2>
         </div>
         <div class="col-12">
