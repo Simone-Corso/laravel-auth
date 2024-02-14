@@ -18,8 +18,13 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth')->name('admin.')->prefix('admin')->group(function() {
+Route::middleware('auth')->name('admin.')->group(function() {
     
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-    Route::resource('/project', AdminProjectController::class);
+    Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/projects/{project}', [AdminProjectController::class, 'show'])->name('project.show');
+    Route::get('/projects/create', [AdminProjectController::class, 'create'])->name('projects.create');
+    Route::get('/projects/{project}/edit', [AdminProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('/projects/{project}', [AdminProjectController::class, 'update'])->name('projects.update');
+    Route::post('/projects', [AdminProjectController::class, 'store'])->name('guest.projects.store');
+    Route::resource('admin/project', AdminProjectController::class);
 });
