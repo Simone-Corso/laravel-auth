@@ -31,15 +31,7 @@
                                 </a>
                             </td>
                             <td>
-                                {{ $post->user->name }}
-                            </td>
-                            <td>
-                                {{ $post->date }}
-                            </td>
-                            <td>
-                                <em>
-                                    {{ substr($post->content, 0, 35) }}
-                                </em>
+                                {{ $post->description }}
                             </td>
                             <td>
                                 <a href="{{ route('admin.projects.show', $project) }}" class="text-decoration-none">

@@ -18,13 +18,13 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth')->name('admin.')->group(function() {
+Route::middleware('auth')->group(function() {
     
-    Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/projects/{project}', [AdminProjectController::class, 'show'])->name('project.show');
-    Route::get('/projects/create', [AdminProjectController::class, 'create'])->name('projects.create');
-    Route::get('/projects/{project}/edit', [AdminProjectController::class, 'edit'])->name('projects.edit');
-    Route::put('/projects/{project}', [AdminProjectController::class, 'update'])->name('projects.update');
-    Route::post('/projects', [AdminProjectController::class, 'store'])->name('guest.projects.store');
+    Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('admin/projects/{project}', [AdminProjectController::class, 'show'])->name('admin.project.show');
+    Route::get('admin/projects/create', [AdminProjectController::class, 'create'])->name('admin.projects.create');
+    Route::get('admin/projects/{project}/edit', [AdminProjectController::class, 'edit'])->name('admin.projects.edit');
+    Route::put('admin/projects/{project}', [AdminProjectController::class, 'update'])->name('admin.projects.update');
+    Route::post('admin/projects', [AdminProjectController::class, 'store'])->name('admin.projects.store');
     Route::resource('admin/project', AdminProjectController::class);
 });
