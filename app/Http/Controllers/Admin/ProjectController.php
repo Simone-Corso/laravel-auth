@@ -62,7 +62,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.prijects.show', compact('project'));
+        return view('admin.show', compact('project'));
     }
 
     /**
