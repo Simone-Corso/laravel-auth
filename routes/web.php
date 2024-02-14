@@ -27,4 +27,4 @@ Route::middleware('auth')->group(function() {
     Route::put('admin/projects/{project}', [AdminProjectController::class, 'update'])->name('admin.projects.update');
     Route::post('admin/projects', [AdminProjectController::class, 'store'])->name('admin.projects.store');
     Route::resource('admin/project', AdminProjectController::class);
-});
+});     

@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin Dashboard')
-
 @section('main-content')
 <div class="container">
     <div class="row">
@@ -31,10 +29,10 @@
                                 </a>
                             </td>
                             <td>
-                                {{ $post->description }}
+                                {{ $project->description }}
                             </td>
                             <td>
-                                <a href="{{ route('admin.projects.show', $project) }}" class="text-decoration-none">
+                                <a href="{{ route('admin.project.show', $project) }}" class="text-decoration-none">
                                     <button class="btn btn-sm btn-primary">
                                         View
                                     </button>
@@ -46,7 +44,7 @@
                                 </a>
                                 <!-- Button trigger modal -->
                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $post->id }}">
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $project->id }}">
                                     Delete
                                 </button>
 
@@ -60,18 +58,6 @@
                                         </div>
                                         <div class="modal-body">
                                             Do you really want to delete {{ $project->title }}?
-                                        </div>
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                        <form class="d-inline-block" action="{{ route('admin.posts.destroy', $post) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button class="btn btn-danger" type="submit">
-                                                Delete
-                                            </button>
-                                        </form>
                                         </div>
                                     </div>
                                     </div>
