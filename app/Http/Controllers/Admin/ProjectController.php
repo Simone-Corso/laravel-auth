@@ -75,7 +75,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $data = $request->all();
-
+        dd($request);
        
 
         $project->title = $data['title'];
