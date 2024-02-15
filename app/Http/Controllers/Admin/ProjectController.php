@@ -23,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        return view('admin.create');
     }
 
     /**
@@ -31,6 +31,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $data = $request->validate([
             'title' => ['required', 'min:4', 'max:40', Rule::unique('projects')],
             'thumb' => ['required', 'min:4', 'url:http,https'],
@@ -40,18 +42,15 @@ class ProjectController extends Controller
         ]);
 
         $formData = $request->all();
-
+        dd($request->all());
         $newProject = new Project();
         $newProject->name = $formData['name'];
         $newProject->thumb = $formData['thumb'];
         $newProject->description = $formData['description'];
-        $newProject->no = $formData['no'];
-        $newProject->type = $formData['type'];
-        $newProject->weakness = $formData['weakness'];
-        $newProject->strength = $formData['strength'];
         $newProject->save();
 
         return redirect()->route('admin.projects.show', $newProject->id);
+
     }
 
     /**

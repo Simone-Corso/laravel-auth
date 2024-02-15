@@ -24,7 +24,7 @@
                                 {{ $project->id }}
                             </th>
                             <td>
-                                <a href="{{ route('admin.project.show', $project) }}">
+                                <a href="{{ route('admin.projects.show', $project) }}">
                                     {{ $project->title }}
                                 </a>
                             </td>
@@ -34,7 +34,7 @@
                             </em>
                             </td>
                             <td>
-                                <a href="{{ route('admin.project.show', $project) }}" class="text-decoration-none">
+                                <a href="{{ route('admin.projects.show', $project) }}" class="text-decoration-none">
                                     <button class="btn btn-sm btn-primary">
                                         View
                                     </button>
