@@ -78,13 +78,9 @@ class ProjectController extends Controller
 
        
 
-        $project->name = $data['title'];
+        $project->title = $data['title'];
         $project->thumb = $data['thumb'];
         $project->description = $data['description'];
-        $project->no = $data['no'];
-        $project->type = $data['type'];
-        $project->weakness = $data['weakness'];
-        $project->strength = $data['strength'];
         $project->save();
 
         return redirect()->route('admin.projects.show', $project->id);
