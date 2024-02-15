@@ -29,7 +29,7 @@
                                 </a>
                             </td>
                             <td>
-                                {{ $project->description }}
+                                {{ substr($project->description, 0,80) }}
                             </td>
                             <td>
                                 <a href="{{ route('admin.project.show', $project) }}" class="text-decoration-none">
