@@ -29,7 +29,9 @@
                                 </a>
                             </td>
                             <td>
+                            <em>
                                 {{ substr($project->description, 0,80) }}
+                            </em>
                             </td>
                             <td>
                                 <a href="{{ route('admin.project.show', $project) }}" class="text-decoration-none">
