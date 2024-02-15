@@ -36,7 +36,7 @@ class ProjectController extends Controller
         $data = $request->validate([
             'title' => ['required', 'min:4', 'max:40', Rule::unique('projects')],
             'thumb' => ['required', 'min:4', 'url:http,https'],
-            'description' => ['required', 'integer', 'min:1', 'max:10'],
+            'description' => ['required', 'string', 'min:1', 'max:10'],
         ], [
             'name.required' => 'Ci deve essere una immagine'
         ]);
@@ -66,7 +66,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        return view('admin.edit', compact('project'));
     }
 
     /**
@@ -95,15 +95,6 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $project = Project::withTrashed()->find($id);
-
-    if (!$project) {
-        return redirect()->route('admin.projects.deleted.index')->with('error', 'Il progetto non esiste.');
-    }
-
-
-    // Elimina definitivamente il progetto
-    $project->forceDelete();
 
     return redirect()->route('admin.projects.deleted.index')->with('success', 'Il progetto è stato eliminato definitivamente.');
     }
