@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Admin\Rule;
+use Illuminate\Validation\Rule;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -32,14 +32,11 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => ['required', 'min:4', 'max:40', Rule::unique('pokemons')],
+            'title' => ['required', 'min:4', 'max:40', Rule::unique('projects')],
             'thumb' => ['required', 'min:4', 'url:http,https'],
             'description' => ['required', 'integer', 'min:1', 'max:10'],
-            'no' => ['required', 'digits_between:1,4'],
-            'type' => ['required', 'digits_between:1,4'],
-            'weakness' => ['required', 'min:10', 'max:3000'],
         ], [
-            'name.required' => 'Ci deve essere una immagine, altrimenti come capiamo che bel pokemon è?'
+            'name.required' => 'Ci deve essere una immagine'
         ]);
 
         $formData = $request->all();
@@ -97,8 +94,18 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project = Project::withTrashed()->find($id);
+
+    if (!$project) {
+        return redirect()->route('admin.projects.deleted.index')->with('error', 'Il progetto non esiste.');
+    }
+
+
+    // Elimina definitivamente il progetto
+    $project->forceDelete();
+
+    return redirect()->route('admin.projects.deleted.index')->with('success', 'Il progetto è stato eliminato definitivamente.');
     }
 }
