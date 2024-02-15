@@ -44,11 +44,13 @@
                                         Edit
                                     </button>
                                 </a>
-                                <!-- Button trigger modal -->
-                               <!-- Button trigger modal -->
+                                <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
                                 <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $project->id }}">
                                     Delete
                                 </button>
+                                </form>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal-{{ $project->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

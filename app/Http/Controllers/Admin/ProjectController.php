@@ -75,7 +75,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $data = $request->all();
-        dd($request);
+        
        
 
         $project->title = $data['title'];
@@ -92,6 +92,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
 
-    return redirect()->route('admin.projects.deleted.index')->with('success', 'Il progetto è stato eliminato definitivamente.');
+        $project->delete();
+    return redirect()->route('admin.projects.index');
     }
 }
