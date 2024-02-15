@@ -9,6 +9,7 @@
             </h2>
         </div>
         <div class="col-12">
+        <img src="{{$project->thumb}}" alt="{{$project->title}}">
             <p>
                 {{ $project->description }}
             </p>
